@@ -1,6 +1,8 @@
 # TodoList (todo-list-upgrade)
 
-A Quasar Framework app
+Essa aplicação é baseada no curso Danny Connell que está disponível no YouTube no seguinte [link](https://www.youtube.com/watch?v=NcDZvqAIo-w&t=1227s). 
+
+Esse app é uma todo list, muito parecida com outra que criei em outro repositório aqui no git, que recebeu um upgrade e está com mais funcionalidades. 
 
 ## Install the dependencies
 ```bash
@@ -11,7 +13,6 @@ npm install
 ```bash
 quasar dev
 ```
-
 
 ### Build the app for production
 ```bash
