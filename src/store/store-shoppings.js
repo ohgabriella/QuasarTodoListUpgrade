@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 const state = {
     shoppings: {
         'ID1': {
@@ -28,11 +30,22 @@ const state = {
 }
 
 const mutations = {
-
+    updateShopping(state, payload) {
+        console.log('payload (from mutation): ', payload)
+        Object.assign(state.shoppings[payload.id], payload.updates)
+    },
+    deleteShopping(state, id) {
+        Vue.delete(state.shoppings, id)
+    }
 }
 
 const actions = {
-
+    updateShopping({ commit }, payload) {
+        commit('updateShopping', payload)
+    },
+    deleteShopping({ commit }, id) {
+        commit('deleteShopping', id)
+    }
 }
 const getters = {
     shoppings: (state) => {

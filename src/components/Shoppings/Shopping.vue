@@ -1,6 +1,6 @@
 <template>
   <q-item
-    @click="shopping.completed = !shopping.completed"
+    @click="updateShopping({ id: id, updates: { completed: !shopping.completed  }})"
     :class="!shopping.completed ? 'bg-teal-2' : 'bg-deep-purple-1'"
     clickable
     v-ripple
@@ -21,11 +21,39 @@
         </div>
       </div>
     </q-item-section>
+
+    <q-item-section side>
+      <q-btn
+        @click.stop="promptToDelete(id)"
+        flat
+        round
+        dense
+        color="negative"
+        icon="delete_outline"
+      />
+    </q-item-section>
   </q-item>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
-  props: ['shopping', 'id']
+  props: ["shopping", "id"],
+  methods: {
+    ...mapActions("shoppings", ["updateShopping", "deleteShopping"]),
+    promptToDelete(id) {
+      this.$q
+        .dialog({
+          title: "Confirm",
+          message: "Deseja deletar?",
+          cancel: true,
+          persistent: true
+        })
+        .onOk(() => {
+          this.deleteShopping(id);
+        });
+    }
+  }
 };
 </script>
