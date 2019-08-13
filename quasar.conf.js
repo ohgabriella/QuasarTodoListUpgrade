@@ -48,7 +48,9 @@ module.exports = function (ctx) {
         'QDialog',
         'QCard',
         'QCardSection',
-        'QCardActions'
+        'QCardActions',
+        'QSpace',
+        'QInput'
 
       ],
 

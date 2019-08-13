@@ -1,18 +1,50 @@
 <template>
   <q-card>
-    <q-card-section>
-      <div class="text-h6">Alert</div>
+    <q-card-section class="row">
+      <div class="text-h6">Add shopping</div>
+      <q-space />
+      <q-btn v-close-popup flat round dense icon="close" />
     </q-card-section>
+    <form @submit.prevent="submitForm">
+      <q-card-section>
+        <div class="row q-mb-sm">
+          <q-input
+            outlined
+            v-model="shoppingToSubmit.name"
+            label="Name"
+            :rules="[val => !!val || 'Field is required']"
+          />
+        </div>
+        <div class="row q-mb-sm">
+          <q-input outlined v-model="shoppingToSubmit.description" label="Description" />
+        </div>
+        <div class="row q-mb-sm">
+          <q-input outlined v-model="shoppingToSubmit.number" label="Number" />
+        </div>
+      </q-card-section>
 
-    <q-card-section>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.</q-card-section>
-
-    <q-card-actions align="right">
-      <q-btn flat label="OK" color="primary" v-close-popup />
-    </q-card-actions>
+      <q-card-actions align="right">
+        <q-btn flat label="Save" color="primary" v-close-popup type="submit" />
+      </q-card-actions>
+    </form>
   </q-card>
 </template>
 <script>
 export default {
-    
+  data() {
+    return {
+      shoppingToSubmit: {
+        name: "",
+        description: "",
+        number: "",
+        completed: false
+      }
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log("submit form");
+    }
+  }
 };
 </script>
