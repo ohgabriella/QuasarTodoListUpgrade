@@ -13,6 +13,7 @@
             v-model="shoppingToSubmit.name"
             label="Name"
             :rules="[val => !!val || 'Field is required']"
+            ref="name"
           />
         </div>
         <div class="row q-mb-sm">
@@ -30,6 +31,8 @@
   </q-card>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   data() {
     return {
@@ -42,8 +45,15 @@ export default {
     };
   },
   methods: {
+    ...mapActions('shoppings', ['addShopping']),
     submitForm() {
-      console.log("submit form");
+      this.$refs.name.validate();
+      if(!this.$refs.name.hasError){
+        this.submitShopping();
+      }
+    },
+    submitShopping(){
+      this.addShopping(this.shoppingToSubmit);
     }
   }
 };

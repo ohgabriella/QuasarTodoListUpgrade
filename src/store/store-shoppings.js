@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import { uid } from 'quasar';
 
 const state = {
     shoppings: {
@@ -36,6 +37,9 @@ const mutations = {
     },
     deleteShopping(state, id) {
         Vue.delete(state.shoppings, id)
+    },
+    addShopping(state, payload){
+        Vue.set(state.shoppings, payload.id, payload.shopping)
     }
 }
 
@@ -45,6 +49,14 @@ const actions = {
     },
     deleteShopping({ commit }, id) {
         commit('deleteShopping', id)
+    },
+    addShopping({commit}, shopping){
+        let shoppingId = uid();
+        let payload = {
+            id: shoppingId,
+            shopping: shopping
+        }
+        commit('addShopping', payload);
     }
 }
 const getters = {
