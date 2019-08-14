@@ -29,7 +29,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      addNewShopping: "false"
+      addNewShopping: false
     };
   },
   name: "PageIndex",

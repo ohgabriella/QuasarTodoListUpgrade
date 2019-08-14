@@ -16,22 +16,32 @@
             ref="name"
             class="col"
           >
-            <template v-if="shoppingToSubmit.name" v-slot:append>
-              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            <template v-slot:append>
+              <q-icon 
+              v-if="shoppingToSubmit.name" 
+              name="close" 
+              @click="shoppingToSubmit = ''" 
+              class="cursor-pointer" />
             </template>
           </q-input>
         </div>
         <div class="row q-mb-sm">
           <q-input  class="col" outlined v-model="shoppingToSubmit.description" label="Description">
-            <template v-if="shoppingToSubmit.description" v-slot:append>
-              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            <template v-slot:append>
+              <q-icon v-if="shoppingToSubmit.description"
+              name="close" 
+              @click="shoppingToSubmit = ''" 
+              class="cursor-pointer" />
             </template>
           </q-input>
         </div>
         <div class="row q-mb-sm">
           <q-input  class="col" outlined v-model="shoppingToSubmit.number" label="Number">
-            <template v-if="shoppingToSubmit.number" v-slot:append>
-              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            <template v-slot:append>
+              <q-icon v-if="shoppingToSubmit.number" 
+              name="close" 
+              @click="shoppingToSubmit = ''" 
+              class="cursor-pointer" />
             </template>
           </q-input>
         </div>
