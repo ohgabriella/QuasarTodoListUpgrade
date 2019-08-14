@@ -13,7 +13,9 @@
       <q-item-label caption>{{ shopping.description }}</q-item-label>
     </q-item-section>
 
-    <q-item-section side>
+    <q-item-section 
+    v-if="shopping.number"
+    side>
       <div class="row">
         <q-icon name="toys" size="20px" class="q-mr-xs" />
         <div class="column justify-center">

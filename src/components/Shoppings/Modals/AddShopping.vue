@@ -14,13 +14,26 @@
             label="Name"
             :rules="[val => !!val || 'Field is required']"
             ref="name"
-          />
+            class="col"
+          >
+            <template v-if="shoppingToSubmit.name" v-slot:append>
+              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            </template>
+          </q-input>
         </div>
         <div class="row q-mb-sm">
-          <q-input outlined v-model="shoppingToSubmit.description" label="Description" />
+          <q-input  class="col" outlined v-model="shoppingToSubmit.description" label="Description">
+            <template v-if="shoppingToSubmit.description" v-slot:append>
+              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            </template>
+          </q-input>
         </div>
         <div class="row q-mb-sm">
-          <q-input outlined v-model="shoppingToSubmit.number" label="Number" />
+          <q-input  class="col" outlined v-model="shoppingToSubmit.number" label="Number">
+            <template v-if="shoppingToSubmit.number" v-slot:append>
+              <q-icon name="close" @click="shoppingToSubmit = ''" class="cursor-pointer" />
+            </template>
+          </q-input>
         </div>
       </q-card-section>
 
@@ -31,7 +44,7 @@
   </q-card>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -45,14 +58,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions('shoppings', ['addShopping']),
+    ...mapActions("shoppings", ["addShopping"]),
     submitForm() {
       this.$refs.name.validate();
-      if(!this.$refs.name.hasError){
+      if (!this.$refs.name.hasError) {
         this.submitShopping();
       }
     },
-    submitShopping(){
+    submitShopping() {
       this.addShopping(this.shoppingToSubmit);
     }
   }

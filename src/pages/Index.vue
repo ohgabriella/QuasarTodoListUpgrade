@@ -1,6 +1,8 @@
 <template>
   <q-page padding>
-    <q-list bordered>
+    <q-list 
+    v-if="Object.keys(shoppings).length"
+    bordered>
       <shopping
         v-for="(shopping, key) in shoppings"
         v-bind:key="key"
@@ -10,11 +12,11 @@
     </q-list>
 
     <div class="absolute-bottom text-center q-mb-lg">
-      <q-btn @click="addNewTask = true" round color="primary" icon="add" size="24px" />
+      <q-btn @click="addNewShopping = true" round color="primary" icon="add" size="24px" />
     </div>
 
-    <q-dialog v-model="addNewTask">
-      <add-shopping />
+    <q-dialog v-model="addNewShopping">
+      <add-shopping @close="addNewShopping = false"/>
     </q-dialog>
   </q-page>
 </template>
@@ -27,7 +29,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      addNewTask: "false"
+      addNewShopping: "false"
     };
   },
   name: "PageIndex",
